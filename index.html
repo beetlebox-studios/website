@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeetleBox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── Fixed nav ───────────────────────────────────────── -->
+<nav>
+  <span class="nav-logo">BeetleBox</span>
+</nav>
+
+<!-- ── Hero (WebGL metaball shader) ────────────────────── -->
+<section id="hero">
+  <canvas id="metaball-canvas"></canvas>
+
+  <div class="hero-nav-row">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Centered image circle — set src to your image path -->
+  <div id="hero-circle">
+    <img id="hero-circle-img" src="beetle_square.png" alt="" />
+  </div>
+
+  <p class="hero-scroll-hint">Scroll</p>
+</section>
+
+<!-- ── Work ────────────────────────────────────────────── -->
+<section id="work">
+  <p class="section-label">Selected work</p>
+  <div class="work-grid">
+    <div class="work-item">
+      <div class="work-overlay">
+        <p class="work-title">Fluid Dynamics</p>
+        <p class="work-meta">WebGL · 2025</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <div class="work-overlay">
+        <p class="work-title">Particle Systems</p>
+        <p class="work-meta">GLSL · 2025</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <div class="work-overlay">
+        <p class="work-title">Ray Marching</p>
+        <p class="work-meta">Shader · 2024</p>
+      </div>
+    </div>
+    <div class="work-item">
+      <div class="work-overlay">
+        <p class="work-title">Cloth Simulation</p>
+        <p class="work-meta">WebGPU · 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ───────────────────────────────────────────── -->
+<section id="about">
+  <p class="section-label">About</p>
+  <div class="about-layout">
+    <h2 class="about-heading">We build things<br>that move.</h2>
+    <div class="about-body">
+      <p>GraphX is a real-time graphics playground — a collection of shaders, simulations, and interactive experiments built on WebGL and WebGPU.</p>
+      <p>Each piece explores a different corner of the GPU pipeline: fluid dynamics, signed distance functions, particle systems, deferred rendering, and more. Built for the browser, no install required.</p>
+      <p>Open source. Contributions welcome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ────────────────────────────────────────── -->
+<section id="services">
+  <p class="section-label">Capabilities</p>
+  <ul class="services-list">
+    <li>Real-time Shaders <span>GLSL / WGSL</span></li>
+    <li>Physics Simulations <span>CPU & GPU</span></li>
+    <li>Procedural Generation <span>Noise, SDF</span></li>
+    <li>Post-processing <span>Multi-pass</span></li>
+    <li>Interactive Installations <span>Web</span></li>
+  </ul>
+</section>
+
+<!-- ── Contact / footer ────────────────────────────────── -->
+<section id="contact">
+  <p class="contact-heading">
+    Let's build<br>
+    something <a href="mailto:hello@graphx.dev">together.</a>
+  </p>
+
+  <div class="contact-footer">
+    <div class="contact-footer-left">
+      <p>© GraphX 2026</p>
+      <p>hello@graphx.dev</p>
+    </div>
+    <div class="contact-offices">
+      <div class="contact-office">
+        <h4>New York</h4>
+        <p>Brooklyn, NY<br>United States</p>
+      </div>
+      <div class="contact-office">
+        <h4>London</h4>
+        <p>Shoreditch, E1<br>United Kingdom</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Dev panel ───────────────────────────────────────── -->
+<div id="dev-panel">
+  <h2>Dev — Metaball</h2>
+  <div class="dev-row">
+    <label>Threshold</label>
+    <input type="range" id="s-threshold" min="0.3" max="3.0" step="0.01" value="1.02">
+    <span class="val" id="v-threshold">1.02</span>
+  </div>
+  <div class="dev-row">
+    <label>Mouse radius</label>
+    <input type="range" id="s-mouse-r" min="10" max="200" step="1" value="59">
+    <span class="val" id="v-mouse-r">59</span>
+  </div>
+  <div class="dev-row">
+    <label>Mouse lerp</label>
+    <input type="range" id="s-lerp" min="0.01" max="1.0" step="0.01" value="0.85">
+    <span class="val" id="v-lerp">0.85</span>
+  </div>
+  <div class="dev-row">
+    <label>Pixel size</label>
+    <input type="range" id="s-pixel" min="1" max="32" step="1" value="8">
+    <span class="val" id="v-pixel">8</span>
+  </div>
+  <div class="dev-row">
+    <label>Circle radius</label>
+    <input type="range" id="s-circle-r" min="40" max="400" step="1" value="160">
+    <span class="val" id="v-circle-r">160</span>
+  </div>
+
+  <h2 style="margin-top:12px">Dev — Slime</h2>
+  <div class="dev-row">
+    <label>Gravity</label>
+    <input type="range" id="s-gravity" min="0.01" max="0.3" step="0.005" value="0.250">
+    <span class="val" id="v-gravity">0.250</span>
+  </div>
+  <div class="dev-row">
+    <label>Viscosity</label>
+    <input type="range" id="s-viscosity" min="0.5" max="0.99" step="0.01" value="0.92">
+    <span class="val" id="v-viscosity">0.92</span>
+  </div>
+  <div class="dev-row">
+    <label>Surf tension</label>
+    <input type="range" id="s-tension" min="0.01" max="0.5" step="0.01" value="0.03">
+    <span class="val" id="v-tension">0.03</span>
+  </div>
+  <div class="dev-row">
+    <label>Detach dist</label>
+    <input type="range" id="s-detach" min="5" max="120" step="1" value="12">
+    <span class="val" id="v-detach">12</span>
+  </div>
+  <div class="dev-row">
+    <label>Stretch frames</label>
+    <input type="range" id="s-stretch" min="10" max="180" step="1" value="10">
+    <span class="val" id="v-stretch">10</span>
+  </div>
+  <div class="dev-row">
+    <label>Spawn interval</label>
+    <input type="range" id="s-spawn" min="10" max="300" step="5" value="10">
+    <span class="val" id="v-spawn">10</span>
+  </div>
+  <div class="dev-row">
+    <label>Drip size min</label>
+    <input type="range" id="s-drip-min" min="5" max="60" step="1" value="5">
+    <span class="val" id="v-drip-min">5</span>
+  </div>
+  <div class="dev-row">
+    <label>Drip size max</label>
+    <input type="range" id="s-drip-max" min="10" max="100" step="1" value="10">
+    <span class="val" id="v-drip-max">10</span>
+  </div>
+</div>
+
+<span id="dev-hint">` — dev panel</span>
+
+<script src="main.js"></script>
+</body>
+</html>
