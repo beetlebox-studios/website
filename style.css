@@ -340,7 +340,7 @@ mark.search-hl.search-hl--current {
   background-image: url('woodgrain.jpg');
   background-size: cover;
   background-position: center;
-  filter: grayscale(1) brightness(0.55);
+  filter: grayscale(1) brightness(0.32);
   z-index: 0;
 }
 
@@ -369,24 +369,16 @@ mark.search-hl.search-hl--current {
 }
 
 /* ── Stickers ────────────────────────────────────────── */
+/* Outline is baked into the image at init — no CSS filter needed for it.
+   Single drop-shadow here is just the cast shadow beneath the sticker. */
 .sticker {
   position: absolute;
   cursor: grab;
   user-select: none;
   pointer-events: auto;
   touch-action: none;
-  /* 0.5px blur smooths pixel-art alpha edges on the outline without visible glow */
-  filter:
-    drop-shadow(-3px -3px 0.5px white)
-    drop-shadow( 3px -3px 0.5px white)
-    drop-shadow(-3px  3px 0.5px white)
-    drop-shadow( 3px  3px 0.5px white)
-    drop-shadow(-3px  0   0.5px white)
-    drop-shadow( 3px  0   0.5px white)
-    drop-shadow( 0   -3px 0.5px white)
-    drop-shadow( 0    3px 0.5px white);
-  transition: transform 0.15s ease;
-  will-change: transform;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.55));
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 .sticker img {
   display: block;
@@ -396,11 +388,13 @@ mark.search-hl.search-hl--current {
 }
 .sticker:hover {
   transform: scale(1.08) rotate(var(--sticker-rot, 0deg));
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.7));
   z-index: 10;
 }
 .sticker.dragging {
   cursor: grabbing;
   transform: scale(1.14) rotate(var(--sticker-rot, 0deg));
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,0.75));
   z-index: 20;
   transition: none;
 }
@@ -436,6 +430,7 @@ mark.search-hl.search-hl--current {
   height: 100%;
   object-fit: cover;
   opacity: 0;
+  color: transparent;
   transition: opacity 0.3s, transform 0.5s var(--ease);
 }
 .work-img[src]:not([src=""]) { opacity: 1; }
@@ -450,6 +445,7 @@ mark.search-hl.search-hl--current {
   object-fit: cover;
   display: block;
   opacity: 0;
+  color: transparent;
   transition: opacity 0.25s var(--ease);
   /* No pointer-events so the filter button beneath stays clickable */
   pointer-events: none;
