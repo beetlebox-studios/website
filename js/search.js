@@ -23,6 +23,7 @@
 
   // ── Open / close ──────────────────────────────────────────────────────────
   function open() {
+    closeOtherPanels('search-wrap');
     wrap.classList.add('open');
     input.focus();
   }

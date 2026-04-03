@@ -6,8 +6,9 @@
   <title>BeetleBox Studios</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Libre+Barcode+128&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -23,6 +24,27 @@
       <a href="#contact" class="nav-btn"><i class="fa-solid fa-paper-plane"></i> Contact</a>
     </nav>
     <div class="navbar-actions">
+      <!-- Language picker -->
+      <div class="lang-wrap" id="lang-wrap">
+        <button class="icon-btn lang-btn" id="lang-btn" aria-label="Select language" aria-expanded="false" aria-haspopup="listbox">
+          <span class="fi fi-un lang-btn-flag" id="lang-btn-flag"></span>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown" role="listbox" aria-label="Language">
+          <!-- populated by translate.js -->
+        </div>
+      </div>
+      <!-- Hidden Google Translate element -->
+      <div id="google_translate_element" style="display:none"></div>
+      <!-- Accent color picker -->
+      <div class="accent-wrap" id="accent-wrap">
+        <button class="icon-btn accent-btn" id="accent-btn" aria-label="Change accent color">
+          <span class="accent-orb" id="accent-orb"></span>
+        </button>
+        <div class="accent-popup" id="accent-popup">
+          <input type="range" id="hue-slider" class="hue-slider" min="0" max="360" step="1" value="140" />
+        </div>
+      </div>
+      <!-- Search -->
       <div class="search-wrap" id="search-wrap">
         <input type="text" id="search-input" placeholder="Search…" autocomplete="off" aria-label="Search page" />
         <span id="search-count"></span>
@@ -119,5 +141,8 @@
 <script src="js/cards.js"></script>
 <script src="js/search.js"></script>
 <script src="js/stickers.js"></script>
+<script src="js/accent.js"></script>
+<script src="js/translate.js"></script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
