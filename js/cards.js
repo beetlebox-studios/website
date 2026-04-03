@@ -193,20 +193,39 @@ const CARD_TYPES = {
       }
       imgWrap.appendChild(el('div', 'work-placeholder-bg'));
 
-      // GIF preview — sits above thumbnail, hidden until hover.
+      // GIF preview — sits above thumbnail, hidden until hover or eye-button tap.
       // src is left empty and only assigned on mouseenter so the GIF
       // starts from frame 1 each time (browsers restart a GIF when src is set).
       // On mouseleave src is cleared, stopping playback and freeing memory.
+      let gifEl = null;
+      let gifPinnedByBtn = false; // true when user toggled it on via the eye button
       if (item.gif) {
-        const gifEl = makeImg('', item.title, 'work-gif');
+        gifEl = makeImg('', item.title, 'work-gif');
         gifEl.setAttribute('aria-hidden', 'true');
-        card.addEventListener('mouseenter', () => { gifEl.src = item.gif; });
-        card.addEventListener('mouseleave', () => { gifEl.src = ''; });
+        card.addEventListener('mouseenter', () => { if (!gifPinnedByBtn) gifEl.src = item.gif; });
+        card.addEventListener('mouseleave', () => { if (!gifPinnedByBtn) gifEl.src = ''; });
         imgWrap.appendChild(gifEl);
       }
 
-      // ── Overlay buttons (top-right of image): link + filter
+      // ── Overlay buttons (top-right of image): link + filter + gif preview
       const btnWrap = el('div', 'game-img-btns');
+
+      if (item.gif) {
+        const eyeBtn = el('button', 'game-img-btn game-gif-btn');
+        eyeBtn.setAttribute('aria-label', `Preview ${item.title}`);
+        eyeBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+        eyeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          gifPinnedByBtn = !gifPinnedByBtn;
+          eyeBtn.classList.toggle('game-gif-btn--active', gifPinnedByBtn);
+          if (gifPinnedByBtn) {
+            gifEl.src = item.gif;
+          } else {
+            gifEl.src = '';
+          }
+        });
+        btnWrap.appendChild(eyeBtn);
+      }
 
       if (item.links?.link) {
         const linkBtn = el('a', 'game-img-btn');

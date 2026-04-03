@@ -80,7 +80,7 @@ function applyJokeFont(fontFamily) {
   clearJokeFont();
   jokeFontStyle = document.createElement('style');
   jokeFontStyle.id = 'joke-font-style';
-  jokeFontStyle.textContent = `body, body *:not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"]) { font-family: '${fontFamily}', sans-serif !important; }`;
+  jokeFontStyle.textContent = `body, body *:not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not([class*="fa-"]):not(.lang-option--sub .lang-option-label) { font-family: '${fontFamily}', sans-serif !important; }`;
   document.head.appendChild(jokeFontStyle);
 }
 

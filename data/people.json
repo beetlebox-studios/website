@@ -27,7 +27,7 @@
     "name": "Ryan",
     "role": "Programmer",
     "bio": "bio text goes here",
-    "image": "images/ryan.JPG",
+    "image": "images/ryan.jpg",
     "founder": true,
     "links": {
       "github": "https://github.com/Ryan-Brosius",

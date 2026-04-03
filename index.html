@@ -22,6 +22,7 @@
       <a href="#about"   class="nav-btn"><i class="fa-solid fa-circle-info"></i> About</a>
       <a href="#people"  class="nav-btn"><i class="fa-solid fa-user-group"></i> Team</a>
       <a href="#contact" class="nav-btn"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+      <a href="#gallery" class="nav-btn"><i class="fa-solid fa-images"></i> Gallery</a>
     </nav>
     <div class="navbar-actions">
       <!-- Language picker -->
@@ -96,6 +97,7 @@
           <span class="tag">C#</span>
           <span class="tag">HLSL</span>
           <span class="tag">WebGL</span>
+          <span class="tag">JavaScript</span>
         </div>
       </div>
     </div>
@@ -125,6 +127,13 @@
   </div>
 </section>
 
+<!-- ── Gallery ──────────────────────────────────────────── -->
+<section id="gallery" class="page-section onload-animation" style="--delay: 175ms">
+  <div class="gallery-stage" id="gallery-stage">
+    <div class="gallery-cards" id="gallery-cards" aria-label="Photo gallery carousel"></div>
+  </div>
+</section>
+
 <!-- ── Footer ─────────────────────────────────────────── -->
 <footer id="site-footer">
   <div class="footer-inner">
@@ -137,8 +146,10 @@
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/cards.js"></script>
+<script src="js/gallery.js"></script>
 <script src="js/search.js"></script>
 <script src="js/stickers.js"></script>
 <script src="js/accent.js"></script>

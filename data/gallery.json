@@ -1,0 +1,22 @@
+[
+  {
+    "image": "images/gallery/bubblefish_demo.jpg",
+    "description": "Bubblefish demo"
+  },
+  {
+    "image": "images/gallery/gdc_jam.jpg",
+    "description": "GDC Game Jam"
+  },
+  {
+    "image": "images/gallery/paper_demo.jpg",
+    "description": "Paper Game demo"
+  },
+  {
+    "image": "images/gallery/paper_presentation.jpg",
+    "description": "Paper Game presentation"
+  },
+  {
+    "image": "images/gallery/pgm_award.png",
+    "description": "PGM Award"
+  }
+]
